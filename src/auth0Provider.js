@@ -10,7 +10,7 @@ const Auth0ProviderWithHistory = ({children}) => {
 
     const onRedirectCallback = (appState) => {
         console.log('me redireccionan weeeeeeey');
-        history.push(appState?.returnTo || window.location.pathname);
+        history.push('https://lareserva-frontend.herokuapp.com/home');
     };
 
     return(
