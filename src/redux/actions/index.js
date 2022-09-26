@@ -26,7 +26,7 @@ export const createTournament = (payload) => {
 	return async function (dispatch) {
 		try {
 			const info = await axios.post(
-				`https://lareserva-frontend.herokuapp.com/tournaments`,
+				`https://lareserva-backend.herokuapp.com/tournaments`,
 				payload
 			);
 
@@ -52,7 +52,7 @@ export const modifyTournaments = (
 ) => {
 	return async function (dispatch) {
 		try {
-			const info = await axios.put(`https://lareserva-frontend.herokuapp.com/tournaments/${id}`, {
+			const info = await axios.put(`https://lareserva-backend.herokuapp.com/tournaments/${id}`, {
 				name,
 				amountOfTeams,
 				dateInit,
@@ -74,7 +74,7 @@ export const modifyTournaments = (
 export const createPlayers = (payload) => {
 	return async (dispatch) => {
 		try {
-			const info = await axios.post('https://lareserva-frontend.herokuapp.com/players', payload);
+			const info = await axios.post('https://lareserva-backend.herokuapp.com/players', payload);
 			return dispatch({
 				type: CREATE_PLAYER,
 				payload: info.data
@@ -96,7 +96,7 @@ export const getAllTournaments = (
 	return async (dispatch) => {
 		try {
 			const info = await axios.get(
-				`https://lareserva-frontend.herokuapp.com/tournaments?page=${page}&order=${order}&property=${property}&category=${category}&genre=${genre}&state=${state}`
+				`https://lareserva-backend.herokuapp.com/tournaments?page=${page}&order=${order}&property=${property}&category=${category}&genre=${genre}&state=${state}`
 			);
 			dispatch({
 				type: GET_ALL_TOURNAMENTS,
@@ -111,7 +111,7 @@ export const getAllTournaments = (
 export const getTournamentsAdmin = (payload) => {
 	return async (dispatch) => {
 		try {
-			const info = await axios.get('https://lareserva-frontend.herokuapp.com/tournaments/panel');
+			const info = await axios.get('https://lareserva-backend.herokuapp.com/tournaments/panel');
 			return dispatch({
 				type: GET_TOURNAMENTS_ADMIN,
 				payload: info.data
@@ -123,7 +123,7 @@ export const getTournamentsAdmin = (payload) => {
 export const tournamentDetails = (id) => {
 	return async function (dispatch) {
 		try {
-			const info = await axios.get(`https://lareserva-frontend.herokuapp.com/tournaments/${id}`);
+			const info = await axios.get(`https://lareserva-backend.herokuapp.com/tournaments/${id}`);
 			return dispatch({
 				type: TOURNAMENT_DETAILS,
 				payload: info.data
@@ -138,7 +138,7 @@ export const searchTournaments = (name) => {
 	return async function (dispatch) {
 		try {
 			const info = await axios.get(
-				`https://lareserva-frontend.herokuapp.com/tournaments?name=${name}`
+				`https://lareserva-backend.herokuapp.com/tournaments?name=${name}`
 			);
 			return dispatch({ type: SEARCH_TOURNAMENTS, payload: info.data });
 		} catch (error) {
@@ -151,7 +151,7 @@ export const getTournamentsHome = (page, order, property) => {
 	return async (dispatch) => {
 		try {
 			const info = await axios.get(
-				`https://lareserva-frontend.herokuapp.com/home?page=${page}&order=${order}&property=${property}`
+				`https://lareserva-backend.herokuapp.com/home?page=${page}&order=${order}&property=${property}`
 			);
 			dispatch({
 				type: GET_TOURNAMENTS_HOME,
@@ -166,7 +166,7 @@ export const getTournamentsHome = (page, order, property) => {
 export const getAllUsers = (payload) => {
 	return async (dispatch) => {
 		try {
-			const info = await axios.get('https://lareserva-frontend.herokuapp.com/users', payload);
+			const info = await axios.get('https://lareserva-backend.herokuapp.com/users', payload);
 			dispatch({
 				type: GET_ALL_USERS,
 				payload: info.data
@@ -181,7 +181,7 @@ export const createUser = (payload) => {
 	return async (dispatch) => {
 		try {
 			const info = await axios.post(
-				'https://lareserva-frontend.herokuapp.com/users/post',
+				'https://lareserva-backend.herokuapp.com/users/post',
 				payload
 			);
 			dispatch({
@@ -197,7 +197,7 @@ export const createUser = (payload) => {
 export const banUser = (id) => {
 	return async (dispatch) => {
 		try {
-			const info = await axios.put(`https://lareserva-frontend.herokuapp.com/users/ban/${id}`);
+			const info = await axios.put(`https://lareserva-backend.herokuapp.com/users/ban/${id}`);
 			dispatch({
 				type: BAN_USER,
 				payload: info.data
@@ -211,7 +211,7 @@ export const banUser = (id) => {
 export const toAdmin = (id) => {
 	return async (dispatch) => {
 		try {
-			const info = await axios.put(`https://lareserva-frontend.herokuapp.com/users/admin/${id}`);
+			const info = await axios.put(`https://lareserva-backend.herokuapp.com/users/admin/${id}`);
 			dispatch({
 				type: TO_ADMIN,
 				payload: info.data
@@ -224,7 +224,7 @@ export const toAdmin = (id) => {
 
 export const getUserDetails = (email) => {
 	return async function (dispatch) {
-		const info = await axios.get(`https://lareserva-frontend.herokuapp.com/users/${email}`);
+		const info = await axios.get(`https://lareserva-backend.herokuapp.com/users/${email}`);
 		return dispatch({
 			type: GET_USER_DETAILS,
 			payload: info.data
@@ -236,7 +236,7 @@ export function getNext5Tournaments() {
 	return async (dispatch) => {
 		try {
 			const nextTournaments = await axios.get(
-				'https://lareserva-frontend.herokuapp.com/next?index=1&limit=5'
+				'https://lareserva-backend.herokuapp.com/next?index=1&limit=5'
 			);
 
 			dispatch({
@@ -253,7 +253,7 @@ export function getNextTournament() {
 	return async (dispatch) => {
 		try {
 			const nextTournament = await axios.get(
-				'https://lareserva-frontend.herokuapp.com/next?index=0&limit=1'
+				'https://lareserva-backend.herokuapp.com/next?index=0&limit=1'
 			);
 
 			dispatch({
@@ -270,7 +270,7 @@ export function deleteTournament(id) {
 	return async (dispatch) => {
 		try {
 			const info = await axios.delete(
-				`https://lareserva-frontend.herokuapp.com/tournaments/${id}`
+				`https://lareserva-backend.herokuapp.com/tournaments/${id}`
 			);
 			dispatch({
 				type: DELETE_TOURNAMENT,

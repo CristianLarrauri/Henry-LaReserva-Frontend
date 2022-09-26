@@ -7,7 +7,7 @@ export default function ScorersTable({ id }) {
 	const [scorersInfo, setScorersInfo] = useState([]);
 	useEffect(() => {
 		axios
-			.get(`https://lareserva-frontend.herokuapp.com/scorers?tournament=${id}`)
+			.get(`https://lareserva-backend.herokuapp.com/scorers?tournament=${id}`)
 			.then((data) => setScorersInfo(data.data));
 	}, []);
 

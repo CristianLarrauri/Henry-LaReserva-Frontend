@@ -8,7 +8,7 @@ export default function TeamsTable({ id }) {
 
 	useEffect(() => {
 		axios
-			.get(`https://lareserva-frontend.herokuapp.com/positions?tournament=${id}`)
+			.get(`https://lareserva-backend.herokuapp.com/positions?tournament=${id}`)
 			.then((data) => setTeams(data.data));
 	}, []);
 

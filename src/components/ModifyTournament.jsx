@@ -32,7 +32,7 @@ export default function ModifyTournaments() {
 	});
 
 	useEffect(() => {
-		axios.get(`https://lareserva-frontend.herokuapp.com/tournaments/${id}`).then((data) =>
+		axios.get(`https://lareserva-backend.herokuapp.com/tournaments/${id}`).then((data) =>
 			setInput({
 				name: data.data.name,
 				amountOfTeams: data.data.amountOfTeams,
