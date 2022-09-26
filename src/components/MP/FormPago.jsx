@@ -53,7 +53,7 @@ function FormPago() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/checkout`)
+      .get(`https://lareserva-backend.herokuapp.com/checkout`)
       .then((data) => {
         setDatos(data?.data);
       })
