@@ -35,7 +35,7 @@ export default function Profile() {
 					className="bg-gray-200 p-3 rounded font-medium hover:scale-110 duration-300"
 					onClick={() =>
 						loginWithRedirect({
-							redirectUri: 'https://lareserva-backend.herokuapp.com/home'
+							redirectUri: 'https://lareserva-frontend.herokuapp.com/home'
 						})
 					}
 				>
@@ -48,7 +48,7 @@ export default function Profile() {
 						className="bg-gray-200 p-3 rounded font-medium hover:scale-110 duration-300"
 						onClick={() =>
 							logout({
-								returnTo: 'https://lareserva-backend.herokuapp.com/home'
+								returnTo: 'https://lareserva-frontend.herokuapp.com/home'
 							})
 						}
 					>
