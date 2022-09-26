@@ -10,7 +10,7 @@ export default function Profile() {
 		//Idea para el login
 		if (!isLoading && user) {
 			axios
-				.post('http://localhost:3001/users/post', {
+				.post('https://lareserva-frontend.herokuapp.com/users/post', {
 					email: user.email,
 					name: user.name,
 					img: user.picture
@@ -35,7 +35,7 @@ export default function Profile() {
 					className="bg-gray-200 p-3 rounded font-medium hover:scale-110 duration-300"
 					onClick={() =>
 						loginWithRedirect({
-							redirectUri: 'http://localhost:3000/home'
+							redirectUri: 'https://lareserva-frontend.herokuapp.com/home'
 						})
 					}
 				>
@@ -48,7 +48,7 @@ export default function Profile() {
 						className="bg-gray-200 p-3 rounded font-medium hover:scale-110 duration-300"
 						onClick={() =>
 							logout({
-								returnTo: 'http://localhost:3000/home'
+								returnTo: 'https://lareserva-frontend.herokuapp.com/home'
 							})
 						}
 					>
