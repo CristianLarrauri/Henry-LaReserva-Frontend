@@ -12,7 +12,7 @@ function FormPago() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/mercadopago`)
+      .get(`https://lareserva-backend.herokuapp.com/mercadopago`)
       .then((data) => {
         setDatos(data?.data);
       })

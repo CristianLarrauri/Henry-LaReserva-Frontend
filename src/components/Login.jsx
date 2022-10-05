@@ -19,7 +19,7 @@ export default function Login(props) {
 
 		if (props.authed === false) {
 			loginWithRedirect({
-				redirectUri: `http://localhost:3000${props.to}`
+				redirectUri: `https://lareserva-frontend.herokuapp.com${props.to}`
 			});
 		}
 
