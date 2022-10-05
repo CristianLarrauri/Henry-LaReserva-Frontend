@@ -7,10 +7,12 @@ import { IoLocation } from "react-icons/io5";
 import { SiGmail } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useAuth0 } from "@auth0/auth0-react";
 import popUpStyles from '../styles/PopUpStyles.module.css';
 
 export default function Landing() {
   const [popUpError, setPopUpError] = useState({});
+  const {loginWithRedirect, user, isLoading} = useAuth0();
 
   function redirectTo(target) {
     if (target === 2) {
@@ -119,9 +121,16 @@ export default function Landing() {
         <Link to="/home">
           <button>Ingresar</button>
         </Link>
-        <Link to="/">
-          <button>Registrate</button>
+        {!isLoading && !user &&
+        (
+          <Link to="/">
+            <button onClick={() => loginWithRedirect({
+              redirectUri: 'https://lareserva-frontend.herokuapp.com/login'
+            })}>Registrate
+            </button>
         </Link>
+        )}
+        
       </div>
 
       <div
@@ -147,7 +156,7 @@ export default function Landing() {
 					</div>
 				</div>
 
-      <div className={styles.iconsContainer}>
+      <div className='w-full flex flex-col items-center md:flex-row md:justify-center '>
         <a href="https://wa.me/5492615110030" target="_blank">
           <div className={styles.iconsSubContainer}>
             <IoLogoWhatsapp
@@ -166,7 +175,7 @@ export default function Landing() {
         </div>
       </a>
         <div className={styles.iconsSubContainer}>
-          <CopyToClipboard text="emailfalso123@gmail.com">
+          <CopyToClipboard text="lareserva@gmail.com">
             <SiGmail
               onClick={(e) => redirectTo(2)}
               className={styles.icons}
