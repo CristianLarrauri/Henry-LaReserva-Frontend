@@ -39,7 +39,6 @@ export default function Profile() {
 	useEffect(() => {
 		if(!isLoading && user && actualUser.username===undefined){//Si la pagina cargo con el usuario ya logeado y todavia no tengo su info en la redux store
 			//Pido la info del usuario a mi db
-			console.log('1');
 
 			axios.get(`https://lareserva-backend.herokuapp.com/users/${user.email}`)
 			.then(info => {
@@ -54,7 +53,6 @@ export default function Profile() {
 				})
 				.then((info) => {
 					//En caso de exito redirige al home
-					console.log('Creado con exito');
 					let userInfo = info.data[0];
 					dispatch(setActualUser(userInfo.name, userInfo.ban, userInfo.admin));
 					history.push(history.location.pathname);

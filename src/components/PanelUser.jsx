@@ -48,7 +48,6 @@ export default function PanelUser() {
 	return (
 		<div className="min-h-screen flex flex-col justify-between">
 			<Nav />
-			{console.log(tournaments)}
 			<div className="flex justify-center text-gray-700 flex-wrap">
 				<div
 					className="bg-gray-100 p-6 flex flex-col items-center

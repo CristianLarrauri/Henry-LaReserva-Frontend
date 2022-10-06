@@ -51,7 +51,6 @@ export default function Home() {
         axios.put(`https://lareserva-backend.herokuapp.com/tournaments/quitcupos/${IdTournament}`)
         .then(() =>{
           localStorage.setItem("IdTournament", undefined);
-          console.log(IdTournament.getItem("IdTournament"))
         });
       }
 

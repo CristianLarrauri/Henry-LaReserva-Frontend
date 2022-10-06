@@ -43,7 +43,6 @@ export default function PlayerInscription() {
 	const handleChangeSelect = (e) => {
 		e.preventDefault();
 		localStorage.setItem("IdTournament", e.target.value);
-		console.log("asd: "+e.target.value);
 		setSelectValue(e.target.value);
 	};
 
@@ -556,7 +555,6 @@ export default function PlayerInscription() {
 
 	useEffect(() => {
 		localStorage.setItem("idTeam", idTeam);
-		console.log('UseEffect ' + idTeam)
 		if(idTeam){
 			history.push('/pago')
 		}
