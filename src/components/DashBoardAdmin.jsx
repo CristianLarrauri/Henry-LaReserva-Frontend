@@ -23,6 +23,7 @@ export default function DashBoardAdmin() {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const allUsers = useSelector((state) => state.users);
+	console.log('allus', allUsers);
 
 	const allTournaments = useSelector((state) => state.tournamentsAdmin);
 	const { user } = useAuth0();
@@ -42,7 +43,7 @@ export default function DashBoardAdmin() {
 
 	const handleBan = (e) => {
 		const payload = {
-			email: `${user.email}`,
+			email: `${e.target.name}`,
 			option: 'Ban'
 		};
 
@@ -58,7 +59,7 @@ export default function DashBoardAdmin() {
 
 	const handleUnban = (e) => {
 		const payload = {
-			email: `${user.email}`,
+			email: `${e.target.name}`,
 			option: 'Unban'
 		};
 		dispatch(banUser(e.target.value));
@@ -177,6 +178,7 @@ export default function DashBoardAdmin() {
 								{e.ban === false ? (
 									<td>
 										<button
+											name={e.email}
 											value={e.id}
 											onClick={(e) => handleBan(e)}
 											className="text-red-700 mx-3 cursor-pointer hover:text-gray-700 duration-300 font-medium text-lg"
@@ -187,6 +189,7 @@ export default function DashBoardAdmin() {
 								) : (
 									<td>
 										<button
+											name={e.email}
 											value={e.id}
 											onClick={(e) => handleUnban(e)}
 											className="text-green-700 mx-3 cursor-pointer hover:text-gray-700 duration-300 font-medium text-lg"
