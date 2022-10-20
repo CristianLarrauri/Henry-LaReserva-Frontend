@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function PopUp(msg){
     const [actualState, setActualState] = useState(false);
+    console.log(msg);
     useEffect(() => {
         setActualState(Object.keys(msg.msg).length!==0);
     },[msg]);
