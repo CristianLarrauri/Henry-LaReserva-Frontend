@@ -16,26 +16,21 @@ export default function Login(props) {
 		//Si el usuario esta logeado agarrar su mail y preguntar en el backend si el email existe
 		//Si el email existe no hacer nada
 		//Si el email no existe crear el usuario en la db
-		console.log('hola');
-		
 		if (props.authed === false) {
-			console.log('entre aca: ');
 			loginWithRedirect({
-				redirectUri: `https://lareserva-frontend.herokuapp.com${props.to}`
+				redirectUri: `http://localhost:3000${props.to}`
 			});
 		}
 
 		if (!isLoading && user) {
-			console.log('no, aca');	
 			axios
-				.post('https://lareserva-backend.herokuapp.com/users/post', {
+				.post('http://localhost:3001/users/post', {
 					email: user.email,
 					name: user.name,
 					img: user.picture
 				})
 				.then((info) => {
 					//En caso de exito redirige al home
-					console.log('Creado con exito');
 					let userInfo = info.data[0];
 					dispatch(setActualUser(userInfo.name, userInfo.ban, userInfo.admin));
 					history.push('/home');

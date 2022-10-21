@@ -16,20 +16,20 @@ export default function PanelUser() {
 
 	const handleDeleteUser = () => {
 		dispatch(deleteUser(user.email));
-		logout({ returnTo: 'https://lareserva-frontend.herokuapp.com/home' });
+		logout({ returnTo: 'http://localhost:3000/home' });
 	};
 
 	useEffect(() => {
 		if(user.email){
-			axios.get(`https://lareserva-backend.herokuapp.com/users/historial`)
+			axios.get(`http://localhost:3001/users/historial`)
 			.then(res => {
 				let filteredRes = res.data.filter(t => t.email===user.email);
-				
+				console.log(filteredRes);
 				let promisifiedArray = [];
 
 				filteredRes[0].teams.map(teams => {
 					promisifiedArray.push(
-						axios.get(`https://lareserva-backend.herokuapp.com/teams?name=${teams.name}`)
+						axios.get(`http://localhost:3001/teams?name=${teams.name}`)
 					)
 				})
 
@@ -48,7 +48,6 @@ export default function PanelUser() {
 	return (
 		<div className="min-h-screen flex flex-col justify-between">
 			<Nav />
-			{console.log(tournaments)}
 			<div className="flex justify-center text-gray-700 flex-wrap">
 				<div
 					className="bg-gray-100 p-6 flex flex-col items-center
@@ -68,7 +67,7 @@ export default function PanelUser() {
 						className="bg-green-500 w-[180px] h-[60px] rounded-full my-3 z-50
                         hover:scale-110 duration-300 text-white
                         flex justify-center items-center animate-appear"
-						onClick={() => logout({ returnTo: 'https://lareserva-frontend.herokuapp.com/home' })}
+						onClick={() => logout({ returnTo: 'http://localhost:3000/home' })}
 					>
 						<p className="text-xl font-bold flex items-center justify-center">
 							Desconectarse
@@ -98,8 +97,9 @@ export default function PanelUser() {
 					<div className="w-full flex flex-col items-center justify-start mt-6 mb-3 h-full">
 						{
 							tournaments.length!==0?
-								tournaments.map(tournament => (
+								tournaments.map((tournament, index) => (
 								<TournamentListView
+								key = {`inscrpt${index}`}
 								name={tournament.name}
 								id={tournament.id}
 								dateInit={tournament.dateInit}
