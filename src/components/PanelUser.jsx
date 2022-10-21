@@ -16,12 +16,12 @@ export default function PanelUser() {
 
 	const handleDeleteUser = () => {
 		dispatch(deleteUser(user.email));
-		logout({ returnTo: 'http://localhost:3000/home' });
+		logout({ returnTo: 'https://lareserva-frontend.herokuapp.com/home' });
 	};
 
 	useEffect(() => {
 		if(user.email){
-			axios.get(`http://localhost:3001/users/historial`)
+			axios.get(`https://lareserva-backend.herokuapp.com/users/historial`)
 			.then(res => {
 				let filteredRes = res.data.filter(t => t.email===user.email);
 				console.log(filteredRes);
@@ -29,7 +29,7 @@ export default function PanelUser() {
 
 				filteredRes[0].teams.map(teams => {
 					promisifiedArray.push(
-						axios.get(`http://localhost:3001/teams?name=${teams.name}`)
+						axios.get(`https://lareserva-backend.herokuapp.com/teams?name=${teams.name}`)
 					)
 				})
 
@@ -67,7 +67,7 @@ export default function PanelUser() {
 						className="bg-green-500 w-[180px] h-[60px] rounded-full my-3 z-50
                         hover:scale-110 duration-300 text-white
                         flex justify-center items-center animate-appear"
-						onClick={() => logout({ returnTo: 'http://localhost:3000/home' })}
+						onClick={() => logout({ returnTo: 'https://lareserva-frontend.herokuapp.com/home' })}
 					>
 						<p className="text-xl font-bold flex items-center justify-center">
 							Desconectarse

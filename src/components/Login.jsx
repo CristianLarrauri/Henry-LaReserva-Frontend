@@ -18,13 +18,13 @@ export default function Login(props) {
 		//Si el email no existe crear el usuario en la db
 		if (props.authed === false) {
 			loginWithRedirect({
-				redirectUri: `http://localhost:3000${props.to}`
+				redirectUri: `https://lareserva-frontend.herokuapp.com${props.to}`
 			});
 		}
 
 		if (!isLoading && user) {
 			axios
-				.post('http://localhost:3001/users/post', {
+				.post('https://lareserva-backend.herokuapp.com/users/post', {
 					email: user.email,
 					name: user.name,
 					img: user.picture

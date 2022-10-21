@@ -44,7 +44,7 @@ export default function Home() {
 		} else if(status === "in_process"){//Si se rechazo el pago
       localStorage.setItem('tournamentPlayers', null);
 			axios
-			.post('http://localhost:3001/email', payloadbad)
+			.post('https://lareserva-backend.herokuapp.com/email', payloadbad)
 			.then((data) => {
 				return data;
 			})
@@ -58,11 +58,11 @@ export default function Home() {
   async function createPlayers(teamInfo){
     teamInfo = JSON.parse(teamInfo);
     let bulkPromises = [];
-    let tournamentName = await axios.get(`http://localhost:3001/tournaments/${teamInfo.tournament}`);
+    let tournamentName = await axios.get(`https://lareserva-backend.herokuapp.com/tournaments/${teamInfo.tournament}`);
     tournamentName = tournamentName.data.name;
 
     teamInfo.playerName.forEach((player, index) => {
-      bulkPromises.push(axios.post('http://localhost:3001/players', {
+      bulkPromises.push(axios.post('https://lareserva-backend.herokuapp.com/players', {
         name: teamInfo.playerName[index],
         surname: teamInfo.playerSurname[index],
         dni: teamInfo.playerDni[index],
@@ -70,10 +70,10 @@ export default function Home() {
       }))
     })
 
-    bulkPromises.push(axios.put(`http://localhost:3001/tournaments/quitcupos/${teamInfo.tournament}`))
+    bulkPromises.push(axios.put(`https://lareserva-backend.herokuapp.com/tournaments/quitcupos/${teamInfo.tournament}`))
     await Promise.all(bulkPromises);
 
-    await axios.post('http://localhost:3001/teams',{
+    await axios.post('https://lareserva-backend.herokuapp.com/teams',{
       name: teamInfo.teamName,
       players: teamInfo.playerDni.map((dni) => {return parseInt(dni)}),
       image: 'null',
