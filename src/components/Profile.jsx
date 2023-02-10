@@ -39,13 +39,13 @@ export default function Profile() {
 	useEffect(() => {
 		if(!isLoading && user && actualUser.username===undefined){//Si la pagina cargo con el usuario ya logeado y todavia no tengo su info en la redux store
 			//Pido la info del usuario a mi db
-			axios.get(`https://lareserva-backend.herokuapp.com/users/${user.email}`)
+			axios.get(`henry-lareserva-back.up.railway.app/users/${user.email}`)
 			.then(info => {
 				dispatch(setActualUser(info.data.name,info.data.ban,info.data.admin))//Hago un dispatch guardando la info que ahora App.js podra acceder
 			})
 			.catch(err => {
 				axios
-				.post('https://lareserva-backend.herokuapp.com/users/post', {
+				.post('henry-lareserva-back.up.railway.app/users/post', {
 					email: user.email,
 					name: user.name,
 					img: user.picture

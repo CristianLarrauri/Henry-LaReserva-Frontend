@@ -21,7 +21,7 @@ export default function PanelUser() {
 
 	useEffect(() => {
 		if(user.email){
-			axios.get(`https://lareserva-backend.herokuapp.com/users/historial`)
+			axios.get(`henry-lareserva-back.up.railway.app/users/historial`)
 			.then(res => {
 				let filteredRes = res.data.filter(t => t.email===user.email);
 				console.log(filteredRes);
@@ -29,7 +29,7 @@ export default function PanelUser() {
 
 				filteredRes[0].teams.map(teams => {
 					promisifiedArray.push(
-						axios.get(`https://lareserva-backend.herokuapp.com/teams?name=${teams.name}`)
+						axios.get(`henry-lareserva-back.up.railway.app/teams?name=${teams.name}`)
 					)
 				})
 

@@ -21,7 +21,7 @@ export default function Formpago(props) {
 	const [userEmail, setUserEmail] = useState('');
 
 	useEffect(() => {
-		axios.get(`https://lareserva-backend.herokuapp.com/users/${userEmail}`).then((data) => {
+		axios.get(`henry-lareserva-back.up.railway.app/users/${userEmail}`).then((data) => {
 			if (data.data.ban) {
 				history.push('/home'); //Lo mando a home
 			}

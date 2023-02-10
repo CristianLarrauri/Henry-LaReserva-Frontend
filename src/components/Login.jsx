@@ -24,7 +24,7 @@ export default function Login(props) {
 
 		if (!isLoading && user) {
 			axios
-				.post('https://lareserva-backend.herokuapp.com/users/post', {
+				.post('henry-lareserva-back.up.railway.app/users/post', {
 					email: user.email,
 					name: user.name,
 					img: user.picture
