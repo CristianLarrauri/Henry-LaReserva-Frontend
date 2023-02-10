@@ -77,7 +77,7 @@ export default function Profile() {
 					className="bg-gray-200 p-3 rounded-full text-gray-700 font-medium hover:scale-110 duration-300"
 					onClick={() =>
 						loginWithRedirect({//Si te logeas te redirige a /login
-							redirectUri: 'https://lareserva-frontend.herokuapp.com/login'
+							redirectUri: 'https://henry-lareserva-front.vercel.app/login'
 						})
 					}
 				>
@@ -106,7 +106,7 @@ export default function Profile() {
 							<Link to='/panel' className='mb-2 hover:text-green-700 duration-300'>Panel de usuario</Link>}
 
 							<button className='hover:text-green-700 duration-300'
-							onClick={() => logout({returnTo: 'https://lareserva-frontend.herokuapp.com/home'})}>Desconectarse</button>
+							onClick={() => logout({returnTo: 'https://henry-lareserva-front.vercel.app/home'})}>Desconectarse</button>
 						</div>
 						
 					</div>

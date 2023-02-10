@@ -18,7 +18,7 @@ export default function Login(props) {
 		//Si el email no existe crear el usuario en la db
 		if (props.authed === false) {
 			loginWithRedirect({
-				redirectUri: `https://lareserva-frontend.herokuapp.com${props.to}`
+				redirectUri: `https://henry-lareserva-front.vercel.app${props.to}`
 			});
 		}
 

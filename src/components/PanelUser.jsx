@@ -16,7 +16,7 @@ export default function PanelUser() {
 
 	const handleDeleteUser = () => {
 		dispatch(deleteUser(user.email));
-		logout({ returnTo: 'https://lareserva-frontend.herokuapp.com/home' });
+		logout({ returnTo: 'https://henry-lareserva-front.vercel.app/home' });
 	};
 
 	useEffect(() => {
@@ -67,7 +67,7 @@ export default function PanelUser() {
 						className="bg-green-500 w-[180px] h-[60px] rounded-full my-3 z-50
                         hover:scale-110 duration-300 text-white
                         flex justify-center items-center animate-appear"
-						onClick={() => logout({ returnTo: 'https://lareserva-frontend.herokuapp.com/home' })}
+						onClick={() => logout({ returnTo: 'https://henry-lareserva-front.vercel.app/home' })}
 					>
 						<p className="text-xl font-bold flex items-center justify-center">
 							Desconectarse

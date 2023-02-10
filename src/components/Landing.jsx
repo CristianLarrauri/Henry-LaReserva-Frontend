@@ -125,7 +125,7 @@ export default function Landing() {
         (
           <Link to="/">
             <button onClick={() => loginWithRedirect({
-              redirectUri: 'https://lareserva-frontend.herokuapp.com/login'
+              redirectUri: 'https://henry-lareserva-front.vercel.app/login'
             })}>Registrate
             </button>
         </Link>

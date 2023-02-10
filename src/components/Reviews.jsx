@@ -267,7 +267,7 @@ export default function Reviews() {
 								font-medium text-lg"
 								onClick={() =>
 									loginWithRedirect({
-										redirectUri: 'https://lareserva-frontend.herokuapp.com/reviews'
+										redirectUri: 'https://henry-lareserva-front.vercel.app/reviews'
 									})
 								}
 							>
