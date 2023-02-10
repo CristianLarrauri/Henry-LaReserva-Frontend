@@ -49,7 +49,7 @@ export default function DashBoardAdmin() {
 		dispatch(banUser(e.target.value));
 		setPopUpError({ title: 'Exito', msg: 'Se ha baneado al usuario.' });
 		axios
-			.post('henry-lareserva-back.up.railway.app/email', payload)
+			.post('https://henry-lareserva-back.up.railway.app/email', payload)
 			.then((data) => {
 				return data;
 			})
@@ -67,7 +67,7 @@ export default function DashBoardAdmin() {
 			msg: 'Se ha quitado el baneo al usuario.'
 		});
 		axios
-			.post('henry-lareserva-back.up.railway.app/email', payload)
+			.post('https://henry-lareserva-back.up.railway.app/email', payload)
 			.then((data) => {
 				return data;
 			})

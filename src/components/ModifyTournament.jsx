@@ -50,7 +50,7 @@ export default function ModifyTournament() {
 
 
 	useEffect(() => {
-		axios.get(`henry-lareserva-back.up.railway.app/tournaments/${id}`).then((data) =>
+		axios.get(`https://henry-lareserva-back.up.railway.app/tournaments/${id}`).then((data) =>
 			setInput({
 				name: data.data.name,
 				amountOfTeams: data.data.amountOfTeams,
