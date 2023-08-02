@@ -15,7 +15,7 @@ export default function TeamsTable({ id }) {
 
 	useEffect(() => {
 		axios
-			.get(`https://henry-lareserva-back.up.railway.app/positions?tournament=${id}`)
+			.get(`/positions?tournament=${id}`)
 			.then((data) => setTeams(data.data));
 	}, []);
 
@@ -24,7 +24,7 @@ export default function TeamsTable({ id }) {
 		dispatch(addPoint(e.target.value)).
 		then(() =>
 			axios
-			.get(`https://henry-lareserva-back.up.railway.app/positions?tournament=${id}`)
+			.get(`/positions?tournament=${id}`)
 			.then((data) => {
 				setTeams(data.data);
 			})
@@ -35,7 +35,7 @@ export default function TeamsTable({ id }) {
 		dispatch(quitPoint(e.target.value)).
 		then(() => {
 			axios
-			.get(`https://henry-lareserva-back.up.railway.app/positions?tournament=${id}`)
+			.get(`/positions?tournament=${id}`)
 			.then((data) => setTeams(data.data));
 		})
 		

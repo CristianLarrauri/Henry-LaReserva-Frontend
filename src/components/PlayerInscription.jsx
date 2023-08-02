@@ -38,7 +38,7 @@ export default function PlayerInscription() {
 	const [phase, setPhase] = useState(0);
 
 	useEffect(() => {
-		axios.get('https://henry-lareserva-back.up.railway.app/tournaments/panel')
+		axios.get('/tournaments/panel')
 		.then(res => {
 			setActiveTournaments(
 				res.data.filter(tournament => tournament.state==="Proximo" && tournament.enabled)

@@ -39,7 +39,7 @@ export const createTournament = (payload) => {
   return async function (dispatch) {
     try {
       const info = await axios.post(
-        "https://henry-lareserva-back.up.railway.app/tournaments",
+        "/tournaments",
         payload
       );
 
@@ -66,7 +66,7 @@ export const modifyTournaments = (
   return async function (dispatch) {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/tournaments/${id}`,
+        `/tournaments/${id}`,
         {
           name,
           amountOfTeams,
@@ -91,7 +91,7 @@ export const createPlayers = (payload) => {
   return async (dispatch) => {
     try {
       const info = await axios.post(
-        "https://henry-lareserva-back.up.railway.app/players",
+        "/players",
         payload
       );
       return dispatch({
@@ -108,7 +108,7 @@ export const createTeam = (payload) => {
   return async (dispatch) => {
     try {
       const info = await axios.post(
-        "https://henry-lareserva-back.up.railway.app/teams",
+        "/teams",
         payload
       );
       return dispatch({
@@ -132,7 +132,7 @@ export const getAllTournaments = (
   return async (dispatch) => {
     try {
       const info = await axios.get(
-        `https://henry-lareserva-back.up.railway.app/tournaments?page=${page}&order=${order}&property=${property}&category=${category}&genre=${genre}&state=${state}`
+        `/tournaments?page=${page}&order=${order}&property=${property}&category=${category}&genre=${genre}&state=${state}`
       );
       dispatch({
         type: GET_ALL_TOURNAMENTS,
@@ -148,7 +148,7 @@ export const getTournamentsAdmin = (payload) => {
   return async (dispatch) => {
     try {
       const info = await axios.get(
-        "https://henry-lareserva-back.up.railway.app/tournaments/panel"
+        "/tournaments/panel"
       );
       return dispatch({
         type: GET_TOURNAMENTS_ADMIN,
@@ -164,7 +164,7 @@ export const tournamentDetails = (id) => {
   return async function (dispatch) {
     try {
       const info = await axios.get(
-        `https://henry-lareserva-back.up.railway.app/tournaments/${id}`
+        `/tournaments/${id}`
       );
       return dispatch({
         type: TOURNAMENT_DETAILS,
@@ -181,7 +181,7 @@ export const putFixture = (id, payload) => {
     try {
       const obj = { fixture: payload };
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/tournaments/${id}`,
+        `/tournaments/${id}`,
         obj
       );
       dispatch({
@@ -198,7 +198,7 @@ export const addPoint = (id) => {
   return async (dispatch) => {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/teams/add/${id}`
+        `/teams/add/${id}`
       );
       dispatch({
         type: ADD_POINT,
@@ -214,7 +214,7 @@ export const quitPoint = (id) => {
   return async (dispatch) => {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/teams/quit/${id}`
+        `/teams/quit/${id}`
       );
       dispatch({
         type: QUIT_POINT,
@@ -229,7 +229,7 @@ export const addGoal = (id) => {
   return async (dispatch) => {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/players/add/${id}`
+        `/players/add/${id}`
       );
       dispatch({
         type: ADD_GOAL,
@@ -244,7 +244,7 @@ export const quitGoal = (id) => {
   return async (dispatch) => {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/players/quit/${id}`
+        `/players/quit/${id}`
       );
       dispatch({
         type: QUIT_GOAL,
@@ -260,7 +260,7 @@ export const searchTournaments = (name) => {
   return async function (dispatch) {
     try {
       const info = await axios.get(
-        `https://henry-lareserva-back.up.railway.app/tournaments?name=${name}`
+        `/tournaments?name=${name}`
       );
       return dispatch({ type: SEARCH_TOURNAMENTS, payload: info.data });
     } catch (error) {
@@ -276,7 +276,7 @@ export const getTournamentsHome = (page, order, property) => {
   return async (dispatch) => {
     try {
       const info = await axios.get(
-        `https://henry-lareserva-back.up.railway.app/home?page=${page}&order=${order}&property=${property}`
+        `/home?page=${page}&order=${order}&property=${property}`
       );
       dispatch({
         type: GET_TOURNAMENTS_HOME,
@@ -292,7 +292,7 @@ export const getAllUsers = (payload) => {
   return async (dispatch) => {
     try {
       const info = await axios.get(
-        "https://henry-lareserva-back.up.railway.app/users",
+        "/users",
         payload
       );
       dispatch({
@@ -309,7 +309,7 @@ export const createUser = (payload) => {
   return async (dispatch) => {
     try {
       const info = await axios.post(
-        "https://henry-lareserva-back.up.railway.app/users/post",
+        "/users/post",
         payload
       );
       dispatch({
@@ -326,7 +326,7 @@ export const banUser = (id) => {
   return async (dispatch) => {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/users/ban/${id}`
+        `/users/ban/${id}`
       );
       dispatch({
         type: BAN_USER,
@@ -342,7 +342,7 @@ export const toAdmin = (id) => {
   return async (dispatch) => {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/users/admin/${id}`
+        `/users/admin/${id}`
       );
       dispatch({
         type: TO_ADMIN,
@@ -357,7 +357,7 @@ export const toAdmin = (id) => {
 export const getUserDetails = (email) => {
   return async function (dispatch) {
     const info = await axios.get(
-      `https://henry-lareserva-back.up.railway.app/users/${email}`
+      `/users/${email}`
     );
     return dispatch({
       type: GET_USER_DETAILS,
@@ -370,7 +370,7 @@ export const deleteUser = (email) => {
   return async function (dispatch) {
     try {
       const info = await axios.delete(
-        `https://henry-lareserva-back.up.railway.app/users/${email}`
+        `/users/${email}`
       );
       return dispatch({
         type: DELETE_USER,
@@ -387,7 +387,7 @@ export function postOrder(tournamentId) {
     try {
       const newOrder = await axios({
         method: "post",
-        url: "https://henry-lareserva-back.up.railway.app/order",
+        url: "/order",
         data: { tournamentId },
       });
       return dispatch({
@@ -403,7 +403,7 @@ export function getNext5Tournaments() {
   return async (dispatch) => {
     try {
       const nextTournaments = await axios.get(
-        "https://henry-lareserva-back.up.railway.app/next?index=1&limit=5"
+        "/next?index=1&limit=5"
       );
 
       dispatch({
@@ -420,7 +420,7 @@ export function getNextTournament() {
   return async (dispatch) => {
     try {
       const nextTournament = await axios.get(
-        "https://henry-lareserva-back.up.railway.app/next?index=0&limit=1"
+        "/next?index=0&limit=1"
       );
 
       dispatch({
@@ -437,7 +437,7 @@ export function deleteTournament(id) {
   return async (dispatch) => {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/tournaments/enabled/${id}`
+        `/tournaments/enabled/${id}`
       );
       dispatch({
         type: DELETE_TOURNAMENT,
@@ -472,7 +472,7 @@ export function getReviews() {
   return async function (dispatch) {
     try {
       const info = await axios.get(
-        `https://henry-lareserva-back.up.railway.app/reviews`
+        `/reviews`
       );
       console.log("info", info.data);
       return dispatch({
@@ -489,7 +489,7 @@ export function postReviews(payload) {
   return async function (dispatch) {
     try {
       const info = await axios.post(
-        `https://henry-lareserva-back.up.railway.app/reviews`,
+        `/reviews`,
         payload
       );
       return dispatch({
@@ -506,7 +506,7 @@ export function deleteReviews(id) {
   return async function (dispatch) {
     try {
       const info = await axios.delete(
-        `https://henry-lareserva-back.up.railway.app/reviews/${id}`
+        `/reviews/${id}`
       );
       return dispatch({
         type: "DELETE_REVIEWS",
@@ -522,7 +522,7 @@ export function getIdReview(id) {
   return async function (dispatch) {
     try {
       const info = await axios.get(
-        `https://henry-lareserva-back.up.railway.app/reviews/${id}`
+        `/reviews/${id}`
       );
       return dispatch({
         type: "GET_ID_REVIEW",
@@ -538,7 +538,7 @@ export function getEnabledReviews() {
   return async function (dispatch) {
     try {
       const info = await axios.get(
-        "https://henry-lareserva-back.up.railway.app/reviews/enabled"
+        "/reviews/enabled"
       );
       return dispatch({
         type: GET_ENABLED_REVIEWS,
@@ -554,7 +554,7 @@ export function getDisabledReviews() {
   return async function (dispatch) {
     try {
       const info = await axios.get(
-        "https://henry-lareserva-back.up.railway.app/reviews/disabled"
+        "/reviews/disabled"
       );
       return dispatch({
         type: GET_DISABLED_REVIEWS,
@@ -570,7 +570,7 @@ export function reportAllowReview(id) {
   return async function (dispatch) {
     try {
       const info = await axios.put(
-        `https://henry-lareserva-back.up.railway.app/reviews/${id}`
+        `/reviews/${id}`
       );
       return dispatch({
         type: REPORT_REVIEW,

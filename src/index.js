@@ -1,16 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { Auth0Provider } from '@auth0/auth0-react';
-import store from './redux/store/index';
-import HttpsRedirect from 'react-https-redirect';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { Auth0Provider } from "@auth0/auth0-react";
+import store from "./redux/store/index";
+import HttpsRedirect from "react-https-redirect";
+import axios from "axios";
+
+axios.defaults.baseURL = "https://henry-lareserva-back-dwbi-dev.fl0.io/";
 
 ReactDOM.render(
-
   <Provider store={store}>
     <HttpsRedirect>
       <BrowserRouter>
@@ -27,7 +29,6 @@ ReactDOM.render(
     </HttpsRedirect>
   </Provider>,
   document.getElementById("root")
-
 );
 
 // If you want to start measuring performance in your app, pass a function

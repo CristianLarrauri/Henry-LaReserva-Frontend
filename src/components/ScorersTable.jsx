@@ -13,13 +13,13 @@ export default function ScorersTable({ id }) {
 
 	useEffect(() => {
 		axios
-			.get(`https://henry-lareserva-back.up.railway.app/scorers?tournament=${id}&limit=99`)
+			.get(`/scorers?tournament=${id}&limit=99`)
 			.then((data) => setScorersInfo(data.data));
 	}, [userDetail]);
 
 	const handleAddGoal = (e) => {
 		dispatch(addGoal(e.target.value)).
-		then(() => axios.get(`https://henry-lareserva-back.up.railway.app/scorers?tournament=${id}&limit=99`)
+		then(() => axios.get(`/scorers?tournament=${id}&limit=99`)
 		.then((data) => {
 			setScorersInfo(data.data);
 		}));
@@ -27,7 +27,7 @@ export default function ScorersTable({ id }) {
 
 	const handleQuitGoal = (e) => {
 		dispatch(quitGoal(e.target.value)).
-		then(() => axios.get(`https://henry-lareserva-back.up.railway.app/scorers?tournament=${id}&limit=99`)
+		then(() => axios.get(`/scorers?tournament=${id}&limit=99`)
 		.then(data => setScorersInfo(data.data)));
 	};
 	
